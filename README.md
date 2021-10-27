@@ -1,4 +1,4 @@
-# Native Home-Assistant installation on a Raspberry-Pi
+# Native Home-Assistant installation on a Raspberry Pi
 Native Home Assistant installation on a Raspberry Pi without using the Docker image.
 
 ## ASSUMPTIONS
