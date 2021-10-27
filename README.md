@@ -73,7 +73,7 @@ Edit the configuration for the network.
 sudo nano /etc/dhcpcd.conf
 ```
 
-... and e.g. set up a fixed IP address as follows.
+... and configure up a fixed IP address by adding (or updating) the following lines.
 
 ```python
 # THIS IS ONLY AN EXAMPLE
@@ -86,8 +86,29 @@ interface wlan0
 static ip_address=192.168.1.201/24
 #static routers=192.168.1.1
 #static domain_name_servers=192.168.1.1 8.8.8.8
+```
+
+type Ctrl-S and Ctrl-X to save and exit.
+
+### Stop IPv6 if you don't want to use it
+
+Edit the sysctl.
 
 ```
+sudo nano /etc/sysctl.conf
+```
+
+Add the following lines.
+
+```python
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+net.ipv6.conf.lo.disable_ipv6=1
+net.ipv6.conf.eth0.disable_ipv6=1
+```
+
+type Ctrl-S and Ctrl-X to save and exit.
+
 
 
 # THE REST IS NOT READY YET, BUT COMING SOON
