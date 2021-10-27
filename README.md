@@ -60,12 +60,35 @@ Verify if dhcpcd already works.
 sudd service dhcpcd status
 ```
 
-ONLY if it is not configured or installed, you can start it.
+ONLY if it is not configured for automatic boot yet, you can set it to automatic boot.
 
 ```
 sudo service dhcpcd start
 sudo systemctl enable dhcpcd
 ```
+
+Edit the configuration for the network.
+
+```
+sudo nano /etc/dhcpcd.conf
+```
+
+... and e.g. set up a fixed IP address as follows.
+
+```python
+# THIS IS ONLY AN EXAMPLE
+interface eth0
+static ip_address=192.168.1.200/24
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.1 8.8.8.8
+
+interface wlan0
+static ip_address=192.168.1.201/24
+#static routers=192.168.1.1
+#static domain_name_servers=192.168.1.1 8.8.8.8
+
+```
+
 
 # THE REST IS NOT READY YET, BUT COMING SOON
 
