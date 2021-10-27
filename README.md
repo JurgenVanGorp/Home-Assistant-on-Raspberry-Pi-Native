@@ -5,7 +5,7 @@ Native Home Assistant installation on a Raspberry Pi without using the Docker im
 
 ## ASSUMPTIONS
 
-* You have some experience with Raspberry Pi. Installing Home Assistant with Docker is easier, but you have less control.
+* You have some experience with Raspberry Pi (further also abbreviated to RPi because I'm lazy). Installing Home Assistant with Docker is easier, but you have less control.
 * Beware: this installation instruction was written on 30-Oct-2021. Time change, and this information may be outdated when you read it.
 * This instruction was created using a Raspberry Pi 3 B+
 * You have the Raspberry installed native with e.g. the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and the Raspbian OS. 
@@ -19,9 +19,9 @@ Know why you want to install Home-Assistant native, it is not the easiest thing 
 
 ## Setting up the Raspberry Pi
 
-If your Raspberry Pi is already fully up and running and on the network, you may want to skip this step.
+If your RPi is already fully up and running and on the network, you may want to skip this step.
 
-It is assumed that you already brought your Rasberry Pi to the latest software state
+It is assumed that you already brought your RPi to the latest OS and software state.
 
 ```
 sudo apt update -y
@@ -30,6 +30,8 @@ sudo apt --autoremove -y
 ```
 
 ### Basic Settings
+
+Start the RPi configuration screen.
 
 ```
 sudo raspi-config
@@ -55,9 +57,16 @@ sudo reboot
 Verify if dhcpcd already works.
 
 ```
-suddo service dhcpcd status
+sudd service dhcpcd status
 ```
 
-ONLY if it is not configured or installed, you can 
+ONLY if it is not configured or installed, you can start it.
+
+```
+sudo service dhcpcd start
+sudo systemctl enable dhcpcd
+```
+
+# THE REST IS NOT READY YET, BUT COMING SOON
 
 
