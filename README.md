@@ -1,9 +1,22 @@
+# DRAFT - DO NOT USE YET
+
 # Native Home-Assistant installation on a Raspberry-Pi
 Native Home Assistant installation on a Raspberry Pi without using the Docker image.
 
 ## ASSUMPTIONS
 
-* You have some experience with Raspberry Pi. Installing Home Assistant with Docker is easier, but you have less control. In this case the control is needed for direct MCP23017 control over I2C.
-  * If you prefer doing it the easy way: [the Home Assistant home](https://www.home-assistant.io/installation "The one and only Home Assistant") provides an excellent description of how to do this.
-  * A bit more complex instruction [can also be found in Github.io](https://sensorsiot.github.io/IOTstack/Containers/Home-Assistant/)
+* You have some experience with Raspberry Pi. Installing Home Assistant with Docker is easier, but you have less control.
+* Beware: this installation instruction was written on 30-Oct-2021. Time change, and this information may be outdated when you read it.
+* This instruction was created using a Raspberry Pi 3 B+
+* You have the Raspberry installed native with e.g. the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and the Raspbian OS. 
+  * For performance reasons I recommend to install the Raspberry Pi OS Lite (i.e. without the graphical interface)
 
+## Why installing Home Assistant Native?
+
+Know why you want to install Home-Assistant native, it is not the easiest. I did it because I needed more control for directly driving an MCP23017 over I2C. I had instabilities when using the Docker version with the built-in MCP23017 library.
+* If you prefer doing it the easy way: [the Home Assistant home](https://www.home-assistant.io/installation "The one and only Home Assistant") provides an excellent description of how to do this.
+* A bit more complex instruction [can also be found in Github.io](https://sensorsiot.github.io/IOTstack/Containers/Home-Assistant/)
+
+## Setting up the Raspberry Pi
+
+If your Raspberry Pi is already fully up and running and on the network, you may want to skip this step.
