@@ -57,7 +57,7 @@ sudo reboot
 Verify if dhcpcd already works.
 
 ```
-sudd service dhcpcd status
+sudo service dhcpcd status
 ```
 
 ONLY if it is not configured for automatic boot yet, you can set it to automatic boot.
@@ -73,7 +73,7 @@ Edit the configuration for the network.
 sudo nano /etc/dhcpcd.conf
 ```
 
-... and configure up a fixed IP address by adding (or updating) the following lines.
+... and configure a fixed IP address by adding (or updating) the following lines.
 
 ```python
 # THIS IS ONLY AN EXAMPLE
@@ -108,6 +108,8 @@ net.ipv6.conf.eth0.disable_ipv6=1
 ```
 
 type Ctrl-S and Ctrl-X to save and exit.
+
+# Upgrade Python
 
 
 
