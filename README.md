@@ -306,6 +306,8 @@ Under the assumption that you installed Home Assistant on a RPi with IP address 
 
 http://192.168.1.200:8123
 
+The default logon is *root* without a password.
+
 Continue with the standard HA configuration that you can find on [The Home Assistant website](https://www.home-assistant.io/docs/configuration/).
 
 --- end of file
