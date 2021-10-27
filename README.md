@@ -11,12 +11,53 @@ Native Home Assistant installation on a Raspberry Pi without using the Docker im
 * You have the Raspberry installed native with e.g. the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and the Raspbian OS. 
   * For performance reasons I recommend to install the Raspberry Pi OS Lite (i.e. without the graphical interface)
 
-## Why installing Home Assistant Native?
+## Why installing Home-Assistant Native on a Raspberry Pi?
 
-Know why you want to install Home-Assistant native, it is not the easiest. I did it because I needed more control for directly driving an MCP23017 over I2C. I had instabilities when using the Docker version with the built-in MCP23017 library.
+Know why you want to install Home-Assistant native, it is not the easiest thing to do. I did it because I needed more control for directly driving an MCP23017 over I2C. I had instabilities when using the Docker version with the built-in MCP23017 library.
 * If you prefer doing it the easy way: [the Home Assistant home](https://www.home-assistant.io/installation "The one and only Home Assistant") provides an excellent description of how to do this.
 * A bit more complex instruction [can also be found in Github.io](https://sensorsiot.github.io/IOTstack/Containers/Home-Assistant/)
 
 ## Setting up the Raspberry Pi
 
 If your Raspberry Pi is already fully up and running and on the network, you may want to skip this step.
+
+It is assumed that you already brought your Rasberry Pi to the latest software state
+
+```
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt --autoremove -y
+```
+
+### Basic Settings
+
+```
+sudo raspi-config
+```
+
+Then configure the following settings (at will):
+* hostname
+* Enable SSH
+* Change the Pi default password
+* Enable I2C
+* Localization
+* Keyboard
+* Advanced --> Expand File System to use the full SD Card
+
+Exit and reboot if needed.
+
+```
+sudo reboot
+```
+
+### Fixed IP
+
+Verify if dhcpcd already works.
+
+```
+suddo service dhcpcd status
+```
+
+ONLY if it is not configured or installed, you can 
+
+
