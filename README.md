@@ -181,7 +181,7 @@ python3 --version
 pip3 --version
 ```
 
-All three commands should refer to the new versions you have installed. If that is the case ... then congrats: you have installed a new Python version.
+All three commands should refer to the new versions you have installed. If that is the case ... then congrats: you have upgraded to the newest Python version.
 
 ## Install the Home Assistant software
 
