@@ -1,5 +1,5 @@
 Guide creation date: 27-Oct-2021 
-# Step 2: Native Home-Assistant installation on a Raspberry Pi
+# Step 3: Native Home-Assistant installation on a Raspberry Pi
 Native Home Assistant installation on a Raspberry Pi without using the Docker image.
 
 ## PREREQUISITES
