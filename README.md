@@ -1,13 +1,16 @@
+Guide creation date: 27-Oct-2021 
 # Step 2: Native Home-Assistant installation on a Raspberry Pi
 Native Home Assistant installation on a Raspberry Pi without using the Docker image.
 
+## PREREQUISITES
+
+Before starting here, make sure you have a Raspberry Pi with a basic Raspbian OS installed. You can follow [Step 1: setting up the Raspberry Pi](https://github.com/JurgenVanGorp/Step1-Setting-up-the-Raspberry-Pi) if you still need to do that.
+
 ## ASSUMPTIONS
 
-* You have some experience with Raspberry Pi (further also abbreviated to RPi because I'm lazy). Installing Home Assistant (further also abbreviated to HH for the same reason) with Docker is easier, but you have less control.
-* Beware: this installation instruction was written on 30-Oct-2021. Time change, and this information may be outdated when you read it.
+* You have some experience with Raspberry Pi (further also abbreviated to RPi because I'm lazy). Installing Home Assistant (further also abbreviated to HH for the same reason) [with Docker is easier to set up](https://www.home-assistant.io/installation/raspberrypi/). However, we will install our own drivers later on.
+* Beware: this installation instruction was updated on 30-Oct-2021. Times change, and this information may be outdated when you read it.
 * This instruction was created using a Raspberry Pi 3 B+
-* You have the Raspberry installed native with e.g. the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) and the Raspbian OS. 
-  * For performance reasons I recommend to install the Raspberry Pi OS Lite (i.e. without the graphical interface)
 
 ## Why installing Home-Assistant Native on a Raspberry Pi?
 
