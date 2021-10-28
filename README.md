@@ -2,6 +2,8 @@ Guide creation date: 27-Oct-2021
 # Step 3: Native Home-Assistant installation on a Raspberry Pi
 Native Home Assistant installation on a Raspberry Pi without using the Docker image.
 
+Previous topic: [Step 2: Upgrading Python on the Raspberry Pi.](https://github.com/JurgenVanGorp/Step2-Upgrading-Python-on-a-Raspberry-Pi)
+
 ## PREREQUISITES
 
 1. Before starting here, make sure you have a Raspberry Pi with a basic Raspbian OS installed. You can follow [Step 1: setting up the Raspberry Pi](https://github.com/JurgenVanGorp/Step1-Setting-up-the-Raspberry-Pi) if you still need to do that.
@@ -137,4 +139,5 @@ The default logon is *root* without a password.
 
 Continue with the standard HA configuration that you can find on [The Home Assistant website](https://www.home-assistant.io/docs/configuration/).
 
---- end of file
+Next topic: [Step 4: Doing Multi I/O Control with the Raspberry Pi and an MCP23017.](https://github.com/JurgenVanGorp/Step4-MCP23017-multi-IO-control-on-a-Raspberry-Pi-with-I2C)
+
