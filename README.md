@@ -25,24 +25,30 @@ Know why you want to install Home-Assistant native, it is not the easiest thing 
 
 Home Assistant needs several libraries installed upfront for a smooth installation. You may detect more, but the below list is already a good start.
 
+Let's first upgrade pip, if required. Check the pip version with:
+
+```
+pip --version
+```
+
+You may be tempted to just upgrade pip to the latest version with *python3 -m pip install --upgrade p*, but this could result in you e.g. having pip version 21.3.1, where Home-Assistant is not yet compatible with this release. At time of writing, Home Assistant requires pip<20.3,>=8.0.3, so let's make sure to have 20.3 installed.
+
+
+
+Next, install the packages Home-Assistant will need.
+
 ```
 python -m pip install py-spy
-sudo apt-get install libopenjp2-7
-sudo apt-get install libtiff5
+sudo apt install libopenjp2-7 -y
+sudo apt install libtiff5 -y
 python3 -m pip install -U pip setuptools
-sudo apt-get install libjpeg-dev zlib1g-dev
+sudo apt install libjpeg-dev zlib1g-dev -y
 python3 -m pip install Pillow
 ```
 
 ## Install Home-Assistant
 
-**IMPORTANT**: The following steps need to be executed in the right order. Don't skip a step, and be carefull
-
-One more update, to be on the safe side.
-
-```
-sudo apt-get update && sudo apt-get upgrade -y
-```
+**IMPORTANT**: The following steps need to be executed in the right order. Be carefeul to not skip a step.
 
 Install Development packages
 
@@ -50,7 +56,7 @@ Install Development packages
 sudo apt-get install python3-dev python3-venv python3-pip libffi-dev libssl-dev -y
 ```
 
-Create a system account with proper rights, with its own home directory
+Create a system account with proper rights, and in its own home directory.
 
 ```
 sudo useradd -rm homeassistant -G dialout,gpio,i2c
@@ -68,10 +74,15 @@ python3 -m venv .
 source bin/activate
 ```
 
-Install Home-Assistant from scratch.
+Install the wheel package handler. You can find a [thorough explanation of wheels here](https://realpython.com/python-wheels/).
 
 ```
 python3 -m pip install wheel
+```
+
+Install Home-Assistant from scratch.
+
+```
 pip3 install homeassistant
 ```
 
@@ -128,6 +139,45 @@ If all is well, reboot to make sure that HA starts properly as a system service.
 ```
 sudo reboot
 ```
+
+## What in case of errors?
+
+You may need to do some bug fixing if you see errors in the systemctl status log. If you need to go back into the virtual environment to fix or redo things, you can do this with the following commands.
+
+```
+cd /srv
+sudo -u homeassistant -H -s
+cd /srv/homeassistant/
+~~~python3 -m venv .~~~
+source bin/activate
+```
+
+In case you received the following error, the pip version must be downgraded.
+
+```python
+ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
+We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
+homeassistant 2021.10.6 requires pip<20.3,>=8.0.3, but you'll have pip 21.3.1 which is incompatible.
+```
+
+Downgrading pip can be done with the following command.
+
+```
+python -m pip install pip==20.3
+```
+
+Verify the pip version with:
+
+```
+pip --version
+```
+
+```
+```
+
+```
+```
+
 
 ## Finally
 
