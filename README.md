@@ -28,14 +28,12 @@ Home Assistant needs several libraries installed upfront for a smooth installati
 Let's first upgrade pip, if required. Check the pip version with:
 
 ```
-pip --version
+pip3 --version
 ```
 
-You may be tempted to just upgrade pip to the latest version with *python3 -m pip install --upgrade p*, but this could result in you e.g. having pip version 21.3.1, where Home-Assistant is not yet compatible with this release. At time of writing, Home Assistant requires pip<20.3,>=8.0.3, so let's make sure to have 20.3 installed.
+You may be tempted to just upgrade pip to the latest version with *python3 -m pip install --upgrade p*, but this could result in you e.g. having pip version 21.3.1, where Home-Assistant is not yet compatible with this release. 
 
-
-
-Next, install the packages Home-Assistant will need.
+Install the packages Home-Assistant will need.
 
 ```
 python -m pip install py-spy
@@ -132,7 +130,7 @@ Verify that HA has properly started with.
 sudo systemctl status homeassistant@homeassistant
 ```
 
-If you see errors here, you may want to go over the previous steps again, but do verify if there is an error message.
+If you see errors here, you may want to go over the previous steps again, but do verify online if you see error messages.
 
 If all is well, reboot to make sure that HA starts properly as a system service.
 
@@ -142,42 +140,47 @@ sudo reboot
 
 ## What in case of errors?
 
-You may need to do some bug fixing if you see errors in the systemctl status log. If you need to go back into the virtual environment to fix or redo things, you can do this with the following commands.
+The internet will provide a lot of information already. One case of errors could be the trusted networks issue. After a reboot, check the status with:
 
 ```
-cd /srv
-sudo -u homeassistant -H -s
-cd /srv/homeassistant/
-~~~python3 -m venv .~~~
-source bin/activate
+sudo systemctl status homeassistant@homeassistant
 ```
 
-In case you received the following error, the pip version must be downgraded.
-
-```python
-ERROR: After October 2020 you may experience errors when installing or updating packages. This is because pip will change the way that it resolves dependency conflicts.
-We recommend you use --use-feature=2020-resolver to test your packages with the new resolver before it becomes the default.
-homeassistant 2021.10.6 requires pip<20.3,>=8.0.3, but you'll have pip 21.3.1 which is incompatible.
-```
-
-Downgrading pip can be done with the following command.
+If you see the following error in the log file:
 
 ```
-python -m pip install pip==20.3
+Unable to load auth provider homeassistant: libffi.so.7
 ```
 
-Verify the pip version with:
+... try the following. First find the location of your home assistant. if you followed the guide above, this is expected to be at */home/homeassistant/.homeassistant*.
 
 ```
-pip --version
+sudo find / | grep configuration.yaml
 ```
 
-```
-```
+This would give you something like:
 
 ```
+pi@raspberry:~ $ sudo find / | grep configuration.yaml
+/home/homeassistant/.homeassistant/configuration.yaml
 ```
 
+Go into the .homeassistant directory, and edit the configuration.yaml file.
+
+```
+cd /home/homeassistant/.homeassistant
+sudo nano configuration.yaml
+```
+
+Add the following lines at the end of the file. Make sure to update the network address to match your own address.
+
+```
+auth_providers:
+  - type: homeassistant
+  - type: trusted_networks
+    trusted_networks:
+      - 192.168.1.0/24
+```
 
 ## Finally
 
