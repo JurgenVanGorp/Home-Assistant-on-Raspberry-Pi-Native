@@ -1,4 +1,4 @@
-Guide creation date: 27-Oct-2021 
+Guide creation date: 30-Oct-2021 
 # Step 3: Native Home-Assistant installation on a Raspberry Pi
 Native Home Assistant installation on a Raspberry Pi without using the Docker image.
 
@@ -25,13 +25,12 @@ Know why you want to install Home-Assistant native, it is not the easiest thing 
 
 Home Assistant needs several libraries installed upfront for a smooth installation. You may detect more, but the below list is already a good start.
 
-Let's first upgrade pip, if required. Check the pip version with:
-
+**Info** During installation you will get multiple warnings that pip should be upgraded. You may be tempted to indeed upgrade pip to the latest version with 
 ```
-pip3 --version
+python3 -m pip install --upgrade setuptools pip
+python3 -m pip install --upgrade pip
 ```
-
-You may be tempted to just upgrade pip to the latest version with *python3 -m pip install --upgrade p*, but this could result in you e.g. having pip version 21.3.1, where Home-Assistant is not yet compatible with this release. 
+This could result in you e.g. having pip version 21.3.1, where Home-Assistant is not yet compatible with this release. 
 
 Install the packages Home-Assistant will need.
 
@@ -46,13 +45,12 @@ python3 -m pip install Pillow
 
 ## Install Home-Assistant
 
-**IMPORTANT**: The following steps need to be executed in the right order. Be carefeul to not skip a step.
-
 Install Development packages
+```
+sudo apt-get install python3-dev python3-venv python3-pip -y
+```
 
-```
-sudo apt-get install python3-dev python3-venv python3-pip libffi-dev libssl-dev -y
-```
+**IMPORTANT**: The following steps need to be executed in the right order.
 
 Create a system account with proper rights, and in its own home directory.
 
